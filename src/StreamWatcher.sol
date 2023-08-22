@@ -7,21 +7,21 @@ import {ISuperToken} from "@superfluid-finance/ethereum-contracts/contracts/inte
 
 import {SuperTokenV1Library} from "@superfluid-finance/ethereum-contracts/contracts/apps/SuperTokenV1Library.sol";
 
-contract StreamWatcher {
+contract VitalikStreamWatcher {
     using SuperTokenV1Library for ISuperToken;
-    address private constant VITALIK_ADDRESS =
-        0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045;
+    address private immutable i_vitalik_address;
     ISuperToken public token;
 
-    constructor(ISuperToken _token) {
-        token = _token;
+    constructor(address _superTokenAddress, address _vitalikAddress) {
+        token = ISuperToken(_superTokenAddress);
+        i_vitalik_address = _vitalikAddress;
     }
 
     function balanceOf(
         address sender
     ) public view returns (uint8 hasActiveStreamToVitalik) {
         int96 flowRate;
-        (, flowRate, , ) = token.getFlowInfo(sender, VITALIK_ADDRESS);
+        (, flowRate, , ) = token.getFlowInfo(sender, i_vitalik_address);
         if (flowRate != 0) {
             hasActiveStreamToVitalik = 1;
         } else {
