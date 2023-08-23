@@ -9,7 +9,7 @@ contract HelperConfig is Script {
 
     struct NetworkConfig {
         address superTokenAddress;
-        address vitalikAddress;
+        address recipientAddress;
     }
 
     constructor() {
@@ -27,7 +27,7 @@ contract HelperConfig is Script {
     {
         mumbaiNetworkConfig = NetworkConfig({
             superTokenAddress: 0x0A9ee01dCd8fe9AD5A45584c3Fbbae9ECF8dA1FA,
-            vitalikAddress: 0x2dFf5e6EAE8B5ec3E44373247AFFC2b1bb977Ae9
+            recipientAddress: 0x2dFf5e6EAE8B5ec3E44373247AFFC2b1bb977Ae9
         });
     }
 
@@ -38,7 +38,7 @@ contract HelperConfig is Script {
     {
         anvilNetworkConfig = NetworkConfig({
             superTokenAddress: 0x0A9ee01dCd8fe9AD5A45584c3Fbbae9ECF8dA1FA,
-            vitalikAddress: 0x2dFf5e6EAE8B5ec3E44373247AFFC2b1bb977Ae9
+            recipientAddress: 0x2dFf5e6EAE8B5ec3E44373247AFFC2b1bb977Ae9
         });
     }
 }
